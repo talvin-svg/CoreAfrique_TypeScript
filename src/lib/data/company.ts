@@ -8,7 +8,7 @@ export const companyInfo: CompanyInfo = {
   vision: "Building Africa's Digital Asset Future—Responsibly. To be the trusted bridge between innovation and regulation, supporting Africa's transition into a regulated digital economy through investment advisory and Blockchain education aligned with Ghana's regulatory framework.",
   address: "No. 1 Fourth Nii Kwaofio Link, Baatsonaa, P.O. Box CT 6242, Cantonments, Accra, Ghana",
   phone: "+233 (0) 244 252947",
-  email: "frank@coreafrique.com",
+  email: "info@coreafrique.com",
   socialLinks: {
     linkedin: "https://linkedin.com/company/coreafrique",
     twitter: "https://twitter.com/coreafrique",

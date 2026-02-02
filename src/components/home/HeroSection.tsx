@@ -86,15 +86,15 @@ export function HeroSection() {
           <div className="flex flex-wrap justify-center gap-8 text-sm">
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 bg-secondary rounded-full" />
-              <span className="text-primary font-medium">NaVALI Partner</span>
+              <span className="text-primary font-medium">NaVALI Knowledge Partner</span>
             </div>
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 bg-secondary rounded-full" />
-              <span className="text-primary font-medium">CFA Chartered</span>
+              <span className="text-primary font-medium">CFA Charterholder</span>
             </div>
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 bg-secondary rounded-full" />
-              <span className="text-primary font-medium">8+ Years Blockchain</span>
+              <span className="text-primary font-medium">5+ Years Blockchain</span>
             </div>
           </div>
         </motion.div>

@@ -56,7 +56,7 @@ export function ServicesPreviewSection() {
         </motion.div>
 
         {/* Services grid */}
-        <div className="space-y-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {services.map((service, index) => (
             <motion.div
               key={service.id}
@@ -64,56 +64,51 @@ export function ServicesPreviewSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="h-full"
             >
-              <Link href={service.href} className="group block">
-                <div className="p-8 md:p-10 rounded-2xl border border-neutral-200 hover:border-secondary/30 hover:shadow-lg transition-all duration-300 bg-white">
-                  <div className="flex flex-col md:flex-row md:items-start gap-6">
-                    {/* Number */}
-                    <div className="flex-shrink-0">
-                      <span className="text-5xl font-bold text-secondary/30 group-hover:text-secondary/50 transition-colors">
-                        {service.number}
+              <Link href={service.href} className="group block h-full">
+                <div className="p-8 rounded-2xl border border-neutral-200 hover:border-secondary/30 hover:shadow-lg transition-all duration-300 bg-white h-full flex flex-col">
+                  {/* Number */}
+                  <span className="text-5xl font-bold text-secondary/30 group-hover:text-secondary/50 transition-colors mb-4">
+                    {service.number}
+                  </span>
+
+                  {/* Content */}
+                  <h3 className="text-xl md:text-2xl font-semibold text-primary mb-3 group-hover:text-secondary transition-colors">
+                    {service.title}
+                  </h3>
+                  <p className="text-text-secondary mb-6 leading-relaxed flex-1">
+                    {service.description}
+                  </p>
+
+                  {/* Features */}
+                  <div className="flex flex-wrap gap-2 mb-6">
+                    {service.features.map((feature) => (
+                      <span
+                        key={feature}
+                        className="px-3 py-1 bg-surface text-primary text-sm rounded-full"
+                      >
+                        {feature}
                       </span>
-                    </div>
+                    ))}
+                  </div>
 
-                    {/* Content */}
-                    <div className="flex-1 min-w-0">
-                      <h3 className="text-xl md:text-2xl font-semibold text-primary mb-3 group-hover:text-secondary transition-colors">
-                        {service.title}
-                      </h3>
-                      <p className="text-text-secondary mb-6 leading-relaxed">
-                        {service.description}
-                      </p>
-
-                      {/* Features */}
-                      <div className="flex flex-wrap gap-2 mb-6">
-                        {service.features.map((feature) => (
-                          <span
-                            key={feature}
-                            className="px-3 py-1 bg-surface text-primary text-sm rounded-full"
-                          >
-                            {feature}
-                          </span>
-                        ))}
-                      </div>
-
-                      {/* Learn more link */}
-                      <div className="inline-flex items-center gap-2 text-sm font-medium text-primary group-hover:text-secondary transition-colors">
-                        Learn more
-                        <svg
-                          className="w-4 h-4 transform transition-transform group-hover:translate-x-1"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M17 8l4 4m0 0l-4 4m4-4H3"
-                          />
-                        </svg>
-                      </div>
-                    </div>
+                  {/* Learn more link */}
+                  <div className="inline-flex items-center gap-2 text-sm font-medium text-primary group-hover:text-secondary transition-colors">
+                    Learn more
+                    <svg
+                      className="w-4 h-4 transform transition-transform group-hover:translate-x-1"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M17 8l4 4m0 0l-4 4m4-4H3"
+                      />
+                    </svg>
                   </div>
                 </div>
               </Link>

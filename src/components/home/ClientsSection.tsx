@@ -7,7 +7,11 @@ const clients = [
     id: 1,
     name: "Institutional",
     description: "Regulators, government agencies, and financial institutions",
-    examples: ["Bank of Ghana", "SEC Ghana", "NIA"],
+    examples: [
+      // "Bank of Ghana",
+      // "SEC Ghana",
+      // "NIA",
+    ],
   },
   {
     id: 2,
