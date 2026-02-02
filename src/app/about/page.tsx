@@ -1,25 +1,30 @@
 "use client";
 
-import { companyInfo } from "@/lib/data/company";
 import { teamData } from "@/lib/data/team";
 import { timelineData } from "@/lib/data/timeline";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 
-// Separate founder from other team members
 const founder = teamData.find((member) => member.id === "team-1");
 const otherTeamMembers = teamData.filter((member) => member.id !== "team-1");
 
 export default function AboutPage() {
   return (
-    <main className="bg-background">
+    <main className="bg-white">
+      {/* Floating background elements */}
+      <div className="fixed inset-0 pointer-events-none overflow-hidden">
+        <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-secondary/5 rounded-full blur-3xl animate-float" />
+        <div className="absolute bottom-1/3 left-1/4 w-64 h-64 bg-primary/5 rounded-full blur-3xl animate-float-delayed" />
+      </div>
+
       {/* Hero */}
-      <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-5xl mx-auto">
+      <section className="relative pt-32 pb-20 px-6">
+        <div className="max-w-4xl mx-auto">
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="text-secondary font-medium mb-4"
+            className="text-sm font-medium text-secondary mb-4"
           >
             About us
           </motion.p>
@@ -27,38 +32,37 @@ export default function AboutPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-5xl md:text-7xl font-bold text-text-primary tracking-tight mb-6"
+            className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary tracking-tight leading-tight mb-6"
           >
-            Empowering African
+            Building Africa&apos;s
             <br />
-            <span className="text-primary">investments.</span>
+            <span className="text-secondary">digital future</span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-xl text-text-secondary max-w-2xl"
+            className="text-lg text-text-secondary max-w-2xl leading-relaxed"
           >
-            {companyInfo.description}
+            Core Afrique Investment Ltd is a Ghanaian boutique investment and advisory firm
+            focused on unlocking value across emerging technologies, digital assets, and frontier markets.
           </motion.p>
         </div>
       </section>
 
-      {/* Mission & Vision - two column */}
-      <section className="py-24 bg-surface">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Mission & Vision */}
+      <section className="relative py-24 bg-surface">
+        <div className="max-w-6xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-16">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
             >
-              <h2 className="text-sm font-medium text-secondary uppercase tracking-wider mb-4">
-                Our Mission
-              </h2>
-              <p className="text-2xl md:text-3xl font-semibold text-text-primary leading-relaxed">
-                To democratize access to sophisticated investment strategies and
-                blockchain education across Africa.
+              <p className="text-sm font-medium text-secondary mb-3">Mission</p>
+              <p className="text-2xl md:text-3xl font-semibold text-primary leading-relaxed">
+                Building future-ready enterprises through strategic advisory,
+                investment structuring, and capacity building.
               </p>
             </motion.div>
             <motion.div
@@ -67,12 +71,10 @@ export default function AboutPage() {
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
             >
-              <h2 className="text-sm font-medium text-secondary uppercase tracking-wider mb-4">
-                Our Vision
-              </h2>
-              <p className="text-2xl md:text-3xl font-semibold text-text-primary leading-relaxed">
-                An Africa where every investor has the knowledge and tools to
-                build generational wealth.
+              <p className="text-sm font-medium text-secondary mb-3">Vision</p>
+              <p className="text-2xl md:text-3xl font-semibold text-primary leading-relaxed">
+                To be the trusted bridge between innovation and regulation
+                in Africa&apos;s digital economy.
               </p>
             </motion.div>
           </div>
@@ -80,45 +82,38 @@ export default function AboutPage() {
       </section>
 
       {/* Timeline */}
-      <section className="py-24">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.h2
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
+      <section className="relative py-24">
+        <div className="max-w-6xl mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl md:text-4xl font-bold text-text-primary mb-4"
+            className="mb-16"
           >
-            Our journey
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="text-text-secondary text-lg mb-16 max-w-xl"
-          >
-            Key milestones in our growth story.
-          </motion.p>
+            <p className="text-sm font-medium text-secondary mb-2">Journey</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-primary">
+              Our milestones
+            </h2>
+          </motion.div>
 
-          <div className="space-y-0">
+          <div className="space-y-8">
             {timelineData.map((event, index) => (
               <motion.div
                 key={event.id}
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.05 }}
-                className="py-8 border-b border-gray-200 first:border-t"
+                transition={{ delay: index * 0.1 }}
+                className="flex gap-6 items-start"
               >
-                <div className="flex flex-col md:flex-row md:items-start gap-4 md:gap-12">
-                  <span className="text-4xl font-bold text-primary shrink-0 w-24">
-                    {event.year}
-                  </span>
-                  <div>
-                    <h3 className="text-xl font-semibold text-text-primary mb-2">
-                      {event.title}
-                    </h3>
-                    <p className="text-text-secondary">{event.description}</p>
-                  </div>
+                <div className="flex-shrink-0 w-20">
+                  <span className="text-2xl font-bold text-secondary">{event.year}</span>
+                </div>
+                <div className="flex-1 pb-8 border-b border-neutral-200">
+                  <h3 className="text-lg font-semibold text-primary mb-2">
+                    {event.title}
+                  </h3>
+                  <p className="text-text-secondary">{event.description}</p>
                 </div>
               </motion.div>
             ))}
@@ -128,76 +123,60 @@ export default function AboutPage() {
 
       {/* Founder Section */}
       {founder && (
-        <section className="py-24 bg-surface">
-          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.h2
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
+        <section className="relative py-24 bg-surface">
+          <div className="max-w-6xl mx-auto px-6">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-3xl md:text-4xl font-bold text-text-primary mb-4"
+              className="mb-16"
             >
-              Our Founder
-            </motion.h2>
-            <motion.p
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              className="text-text-secondary text-lg mb-12 max-w-xl"
-            >
-              The visionary leader behind Core Afrique Investment Ltd.
-            </motion.p>
+              <p className="text-sm font-medium text-secondary mb-2">Leadership</p>
+              <h2 className="text-3xl md:text-4xl font-bold text-primary">
+                Our Founder
+              </h2>
+            </motion.div>
 
             <div className="grid md:grid-cols-3 gap-12">
-              {/* Founder Photo & Basic Info */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="md:col-span-1"
               >
-                <div className="aspect-square bg-gray-200 rounded-2xl mb-6 overflow-hidden">
+                <div className="aspect-square bg-neutral-200 rounded-2xl mb-6 overflow-hidden">
                   {founder.image ? (
-                    <img
+                    <Image
                       src={founder.image}
                       alt={founder.name}
+                      width={400}
+                      height={400}
                       className="w-full h-full object-cover"
                     />
                   ) : (
-                    <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-primary/20 to-secondary/20">
-                      <span className="text-6xl font-bold text-primary">
+                    <div className="w-full h-full flex items-center justify-center bg-neutral-100">
+                      <span className="text-6xl font-bold text-neutral-300">
                         {founder.name.charAt(0)}
                       </span>
                     </div>
                   )}
                 </div>
-                <h3 className="text-2xl font-bold text-text-primary">{founder.name}</h3>
+                <h3 className="text-xl font-bold text-primary">{founder.name}</h3>
                 <p className="text-secondary font-medium mb-4">{founder.role}</p>
-                <div className="flex flex-col gap-2">
-                  {founder.email && (
-                    <a
-                      href={`mailto:${founder.email}`}
-                      className="text-primary hover:underline text-sm"
-                    >
-                      {founder.email}
-                    </a>
-                  )}
-                  {founder.linkedinUrl && (
-                    <a
-                      href={founder.linkedinUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 text-primary hover:underline text-sm"
-                    >
-                      <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                      </svg>
-                      LinkedIn Profile
-                    </a>
-                  )}
-                </div>
+                {founder.linkedinUrl && (
+                  <a
+                    href={founder.linkedinUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-text-secondary hover:text-primary text-sm"
+                  >
+                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                    </svg>
+                    LinkedIn
+                  </a>
+                )}
               </motion.div>
 
-              {/* Founder Bio & Details */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -205,24 +184,18 @@ export default function AboutPage() {
                 transition={{ delay: 0.1 }}
                 className="md:col-span-2 space-y-8"
               >
-                {/* Bio */}
                 <div>
-                  <h4 className="text-sm font-medium text-secondary uppercase tracking-wider mb-3">
-                    Biography
-                  </h4>
+                  <p className="text-sm font-medium text-text-secondary mb-3">Biography</p>
                   <p className="text-text-secondary leading-relaxed">{founder.bio}</p>
                 </div>
 
-                {/* Qualifications */}
                 <div>
-                  <h4 className="text-sm font-medium text-secondary uppercase tracking-wider mb-3">
-                    Qualifications & Credentials
-                  </h4>
+                  <p className="text-sm font-medium text-text-secondary mb-3">Credentials</p>
                   <div className="flex flex-wrap gap-2">
                     {founder.qualifications.map((qual, i) => (
                       <span
                         key={i}
-                        className="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full"
+                        className="px-3 py-1 bg-white text-primary text-sm rounded-full"
                       >
                         {qual}
                       </span>
@@ -230,37 +203,17 @@ export default function AboutPage() {
                   </div>
                 </div>
 
-                {/* Professional Highlights */}
                 {founder.professionalHighlights && founder.professionalHighlights.length > 0 && (
                   <div>
-                    <h4 className="text-sm font-medium text-secondary uppercase tracking-wider mb-3">
-                      Professional Highlights
-                    </h4>
+                    <p className="text-sm font-medium text-text-secondary mb-3">Highlights</p>
                     <ul className="space-y-2">
                       {founder.professionalHighlights.map((highlight, i) => (
-                        <li key={i} className="flex items-start gap-3">
+                        <li key={i} className="flex items-start gap-3 text-text-secondary">
                           <span className="w-1.5 h-1.5 bg-secondary rounded-full mt-2 shrink-0" />
-                          <span className="text-text-secondary">{highlight}</span>
+                          {highlight}
                         </li>
                       ))}
                     </ul>
-                  </div>
-                )}
-
-                {/* Key Engagements */}
-                {founder.engagements && founder.engagements.length > 0 && (
-                  <div>
-                    <h4 className="text-sm font-medium text-secondary uppercase tracking-wider mb-3">
-                      Key Engagements & Thought Leadership
-                    </h4>
-                    <div className="grid sm:grid-cols-2 gap-2">
-                      {founder.engagements.map((engagement, i) => (
-                        <div key={i} className="flex items-start gap-3">
-                          <span className="w-1.5 h-1.5 bg-primary rounded-full mt-2 shrink-0" />
-                          <span className="text-text-secondary text-sm">{engagement}</span>
-                        </div>
-                      ))}
-                    </div>
                   </div>
                 )}
               </motion.div>
@@ -269,27 +222,22 @@ export default function AboutPage() {
         </section>
       )}
 
-      {/* Team Members */}
-      <section className="py-24">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.h2
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
+      {/* Team */}
+      <section className="relative py-24">
+        <div className="max-w-6xl mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl md:text-4xl font-bold text-text-primary mb-4"
+            className="mb-16"
           >
-            Our Team
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="text-text-secondary text-lg mb-16 max-w-xl"
-          >
-            Meet the experts driving our mission forward.
-          </motion.p>
+            <p className="text-sm font-medium text-secondary mb-2">Team</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-primary">
+              Our people
+            </h2>
+          </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 gap-6">
             {otherTeamMembers.map((member, index) => (
               <motion.div
                 key={member.id}
@@ -297,41 +245,31 @@ export default function AboutPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="flex gap-6 p-6 bg-surface rounded-xl"
+                className="flex gap-5 p-6 bg-surface rounded-xl"
               >
-                <div className="w-24 h-24 shrink-0 bg-gray-200 rounded-xl overflow-hidden">
+                <div className="w-16 h-16 shrink-0 rounded-xl overflow-hidden bg-neutral-200">
                   {member.image ? (
-                    <img
+                    <Image
                       src={member.image}
                       alt={member.name}
+                      width={64}
+                      height={64}
                       className="w-full h-full object-cover"
                     />
                   ) : (
-                    <div className="w-full h-full flex items-center justify-center bg-primary/10">
-                      <span className="text-2xl font-bold text-primary">
+                    <div className="w-full h-full flex items-center justify-center bg-neutral-100">
+                      <span className="text-xl font-bold text-neutral-300">
                         {member.name.charAt(0)}
                       </span>
                     </div>
                   )}
                 </div>
                 <div className="flex-1 min-w-0">
-                  <h3 className="font-semibold text-text-primary text-lg">{member.name}</h3>
+                  <h3 className="font-semibold text-primary">{member.name}</h3>
                   <p className="text-secondary text-sm font-medium mb-2">{member.role}</p>
-                  <p className="text-text-secondary text-sm leading-relaxed mb-3">
+                  <p className="text-text-secondary text-sm leading-relaxed">
                     {member.bio}
                   </p>
-                  {member.qualifications && member.qualifications.length > 0 && (
-                    <div className="flex flex-wrap gap-1.5">
-                      {member.qualifications.slice(0, 3).map((qual, i) => (
-                        <span
-                          key={i}
-                          className="px-2 py-0.5 bg-primary/10 text-primary text-xs rounded-full"
-                        >
-                          {qual}
-                        </span>
-                      ))}
-                    </div>
-                  )}
                 </div>
               </motion.div>
             ))}
@@ -340,33 +278,36 @@ export default function AboutPage() {
       </section>
 
       {/* Values */}
-      <section className="py-24">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.h2
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
+      <section className="relative py-24 bg-primary">
+        <div className="max-w-6xl mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl md:text-4xl font-bold text-text-primary mb-16 text-center"
+            className="text-center mb-16"
           >
-            What we stand for
-          </motion.h2>
+            <p className="text-sm font-medium text-secondary mb-2">Values</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-white">
+              What we stand for
+            </h2>
+          </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-12 md:gap-8">
+          <div className="grid md:grid-cols-3 gap-8">
             {[
               {
                 title: "Integrity",
                 description:
-                  "We operate with transparency and hold ourselves to the highest ethical standards in everything we do.",
+                  "We operate with transparency and hold ourselves to the highest ethical standards.",
               },
               {
                 title: "Excellence",
                 description:
-                  "We pursue mastery in our craft, continuously improving our expertise and the quality of our services.",
+                  "We pursue mastery in our craft, continuously improving our expertise.",
               },
               {
                 title: "Impact",
                 description:
-                  "We measure success by the positive change we create for our clients and the broader African financial ecosystem.",
+                  "We measure success by the positive change we create for our clients.",
               },
             ].map((value, i) => (
               <motion.div
@@ -375,13 +316,12 @@ export default function AboutPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="text-center md:text-left"
+                className="text-center"
               >
-                <h3 className="text-xl font-semibold text-text-primary mb-3 flex items-center gap-3 justify-center md:justify-start">
-                  <span className="w-2 h-2 bg-secondary rounded-full" />
+                <h3 className="text-xl font-semibold text-white mb-3">
                   {value.title}
                 </h3>
-                <p className="text-text-secondary leading-relaxed">
+                <p className="text-white/70 leading-relaxed">
                   {value.description}
                 </p>
               </motion.div>
@@ -391,13 +331,13 @@ export default function AboutPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-24">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <section className="relative py-24">
+        <div className="max-w-6xl mx-auto px-6 text-center">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl md:text-5xl font-bold text-text-primary mb-6"
+            className="text-3xl md:text-4xl font-bold text-primary mb-6"
           >
             Want to work with us?
           </motion.h2>
@@ -408,8 +348,7 @@ export default function AboutPage() {
             transition={{ delay: 0.1 }}
             className="text-text-secondary text-lg mb-10 max-w-lg mx-auto"
           >
-            Get in touch to discuss how we can help you achieve your financial
-            goals.
+            Get in touch to discuss how we can help you achieve your goals.
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -420,13 +359,13 @@ export default function AboutPage() {
           >
             <Link
               href="/contact"
-              className="px-8 py-4 bg-primary text-white rounded-lg font-medium hover:bg-primary-dark transition-colors"
+              className="px-8 py-4 bg-primary text-white rounded-xl font-medium hover:bg-primary-dark transition-colors"
             >
               Contact us
             </Link>
             <Link
               href="/services/investment-advisory"
-              className="px-8 py-4 text-text-primary border border-gray-300 rounded-lg font-medium hover:border-primary hover:text-primary transition-colors"
+              className="px-8 py-4 text-primary border border-neutral-200 rounded-xl font-medium hover:bg-surface transition-colors"
             >
               Explore services
             </Link>
