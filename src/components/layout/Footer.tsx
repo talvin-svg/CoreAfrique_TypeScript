@@ -1,4 +1,5 @@
 import { companyInfo } from "@/lib/data/company";
+import Image from "next/image";
 import Link from "next/link";
 
 const footerLinks = {
@@ -19,11 +20,14 @@ export function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">
-            <Link href="/" className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 rounded-lg bg-secondary flex items-center justify-center">
-                <span className="text-white font-bold text-sm">CA</span>
-              </div>
-              <span className="font-semibold">CoreAfrique</span>
+            <Link href="/" className="flex items-center mb-4">
+              <Image
+                src="/images/logos/core_afrique_logo.png"
+                alt="CoreAfrique"
+                width={800}
+                height={200}
+                className="h-[200px] w-auto object-contain brightness-0 invert"
+              />
             </Link>
             <p className="text-white/70 text-sm leading-relaxed max-w-xs">
               Investment advisory and blockchain education for Africa&apos;s digital economy.

@@ -2,6 +2,7 @@
 
 import { cn } from "@/lib/utils/cn";
 import { AnimatePresence, motion } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -36,15 +37,17 @@ export function Navbar() {
       )}
     >
       <div className="max-w-6xl mx-auto px-6">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-24">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 group">
-            <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center group-hover:bg-secondary transition-colors">
-              <span className="text-white font-bold text-sm">CA</span>
-            </div>
-            <span className="text-lg font-semibold text-primary">
-              CoreAfrique
-            </span>
+          <Link href="/" className="flex items-center group">
+            <Image
+              src="/images/logos/core_afrique_logo.png"
+              alt="CoreAfrique"
+              width={800}
+              height={200}
+              className="h-[200px] w-auto object-contain"
+              priority
+            />
           </Link>
 
           {/* Desktop Navigation */}
