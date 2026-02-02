@@ -1,0 +1,36 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #0F5132;
+  --color-primary-dark: #0A3D26;
+  --color-primary-light: #1A7A4A;
+  --color-secondary: #0D9488;
+  --color-secondary-dark: #0F766E;
+  --color-secondary-light: #14B8A6;
+  --color-background: #F5F5F5;
+  --color-surface: #FFFFFF;
+  --color-text-primary: #1A1A1A;
+  --color-text-secondary: #6B7280;
+}
+
+body {
+  background-color: #F5F5F5;
+  color: #1A1A1A;
+}
+
+/* Ensure text is always visible */
+h1, h2, h3, h4, h5, h6 {
+  color: #1A1A1A;
+}
+
+p {
+  color: #1A1A1A;
+}
+
+.text-text-primary {
+  color: #1A1A1A !important;
+}
+
+.text-text-secondary {
+  color: #6B7280 !important;
+}
