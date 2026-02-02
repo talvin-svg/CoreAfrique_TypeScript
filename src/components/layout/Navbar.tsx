@@ -1,16 +1,16 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { cn } from "@/lib/utils/cn";
+import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { motion, AnimatePresence } from "framer-motion";
-import { cn } from "@/lib/utils/cn";
+import { useEffect, useState } from "react";
 
 const navLinks = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
-  { href: "/services/investment-advisory", label: "Advisory" },
-  { href: "/services/blockchain-education", label: "Education" },
+  { href: "/services/investment-advisory", label: "Investment Advisory" },
+  { href: "/services/blockchain-education", label: "Blockchain Education" },
 ];
 
 export function Navbar() {
